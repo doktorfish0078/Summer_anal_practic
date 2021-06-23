@@ -138,6 +138,21 @@ body {
     margin-bottom: 30px;
 }
 
+
+/* .book_image_other{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+} */
+
+.book_date,
+.book_publishing_house,
+.book_count_pages {
+    padding: 7px 0;
+    font-weight: 700;
+    color: #5ac8fa;
+}
+
 .book_image {
     min-width: 270px;
 }
