@@ -15,38 +15,45 @@
     <div class="header">
         <div class="container">
             <div class="navbar">
-                <div class="navbar_main">
-                    <div class="navbar_brand">
-                        <div class="logo">
-                            <img class="logo" src="../static/images/logo.png" alt="Книги онлайн">
+                <div class="navbar_main_content">
+                    <div class="navbar_main">
+                        <div class="navbar_brand">
+                            <div class="logo">
+                                <img class="logo" src="../static/images/logo.png" alt="Книги онлайн">
+                            </div>
+                            <div class="brand">
+                                <a class="link_brand" href="home.html" class="brand_link">Книги онлайн</a>
+                            </div>
                         </div>
-                        <div class="brand">
-                            <a class="link_brand" href="home.html" class="brand_link">Книги онлайн</a>
+                        <svg id="biblio-icon" viewBox="0 0 971 266">
+                            <path d="M0 8.667v8h970.667v-16H0v8zM894.533 68.8c-18.8 2.667-35.066 13.333-46.666 30.667-12.8 19.2-12.534 50.533.8 70.133 13.333 19.733 32.533 30.133 55.466 30.001 18 0 31.6-5.468 44.8-18.001 14.134-13.333 20.534-28.133 20.534-47.6 0-19.467-6.4-34.267-20.534-47.6-15.2-14.4-34-20.4-54.4-17.6zM912 84.667c27.867 5.333 46 30.4 41.333 56.933-3.866 22.267-19.333 37.6-42.133 41.867-19.733 3.6-42.267-7.867-51.733-26.534-14.8-29.2 1.2-63.866 33.2-71.733 8.533-2.133 10.8-2.133 19.333-.533zm-912-6.8V86h62.4c60.133 0 62.4.133 66.667 2.667 9.733 6 12.133 21.866 4.533 30.8-6.533 7.866-6.533 7.866-72.933 7.866H0V142h63.067c58.666 0 63.333.133 67.6 2.533 13.866 7.2 14.4 26.667 1.066 34.8-4.266 2.534-6.933 2.667-68 2.667H0v16.133l65.067-.4c62.8-.4 65.2-.533 71.066-3.2 13.867-6.4 21.467-18 21.467-32.8 0-9.333-4.8-20.4-11.2-25.733l-4.133-3.467 3.333-3.6c12.667-13.466 11.6-35.333-2.4-48.266-11.2-10.4-8.133-10-79.467-10.4L0 69.867v8zM230.667 134v64h16V70h-16v64zM324 77.867V86h62.4c60.133 0 62.4.133 66.667 2.667 9.733 6 12.133 21.866 4.533 30.8-6.533 7.866-6.533 7.866-72.933 7.866H324V142h63.067c58.666 0 63.333.133 67.6 2.533 13.866 7.2 14.4 26.667 1.066 34.8-4.266 2.534-6.933 2.667-68 2.667H324v16.133l65.067-.4c62.8-.4 65.2-.533 71.066-3.2 13.867-6.4 21.467-18 21.467-32.8 0-9.333-4.8-20.4-11.2-25.733l-4.133-3.467 3.333-3.6c12.667-13.466 11.6-35.333-2.4-48.266-11.2-10.4-8.133-10-79.467-10.4l-63.733-.4v8zM554.667 134v64h128v-16h-112V70h-16v64zm194.666 0v64h16V70h-16v64zM0 258v8h970.667v-16H0v8z" fill-rule="nonzero"></path></svg>
+                        <div class="navbar_nav">
+                            <div class="navbar_nav_item">
+                                <a href="genres.html" class="header_link">
+                                    <div class="icon_header icon_genre"></div>
+                                    Жанры
+                                </a>
+                            </div>
+                            <div class="navbar_nav_item">
+                                <a href="#" class="header_link">
+                                    <div class="icon_header icon_autors"></div>
+                                    Авторы
+                                </a>
+                            </div>
+                            <div class="navbar_nav_item">
+                                <a href="#" class="header_link">
+                                    <div class="icon_header icon_audio"></div>
+                                    Аудиокниги
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <svg id="biblio-icon" viewBox="0 0 971 266">
-                        <path d="M0 8.667v8h970.667v-16H0v8zM894.533 68.8c-18.8 2.667-35.066 13.333-46.666 30.667-12.8 19.2-12.534 50.533.8 70.133 13.333 19.733 32.533 30.133 55.466 30.001 18 0 31.6-5.468 44.8-18.001 14.134-13.333 20.534-28.133 20.534-47.6 0-19.467-6.4-34.267-20.534-47.6-15.2-14.4-34-20.4-54.4-17.6zM912 84.667c27.867 5.333 46 30.4 41.333 56.933-3.866 22.267-19.333 37.6-42.133 41.867-19.733 3.6-42.267-7.867-51.733-26.534-14.8-29.2 1.2-63.866 33.2-71.733 8.533-2.133 10.8-2.133 19.333-.533zm-912-6.8V86h62.4c60.133 0 62.4.133 66.667 2.667 9.733 6 12.133 21.866 4.533 30.8-6.533 7.866-6.533 7.866-72.933 7.866H0V142h63.067c58.666 0 63.333.133 67.6 2.533 13.866 7.2 14.4 26.667 1.066 34.8-4.266 2.534-6.933 2.667-68 2.667H0v16.133l65.067-.4c62.8-.4 65.2-.533 71.066-3.2 13.867-6.4 21.467-18 21.467-32.8 0-9.333-4.8-20.4-11.2-25.733l-4.133-3.467 3.333-3.6c12.667-13.466 11.6-35.333-2.4-48.266-11.2-10.4-8.133-10-79.467-10.4L0 69.867v8zM230.667 134v64h16V70h-16v64zM324 77.867V86h62.4c60.133 0 62.4.133 66.667 2.667 9.733 6 12.133 21.866 4.533 30.8-6.533 7.866-6.533 7.866-72.933 7.866H324V142h63.067c58.666 0 63.333.133 67.6 2.533 13.866 7.2 14.4 26.667 1.066 34.8-4.266 2.534-6.933 2.667-68 2.667H324v16.133l65.067-.4c62.8-.4 65.2-.533 71.066-3.2 13.867-6.4 21.467-18 21.467-32.8 0-9.333-4.8-20.4-11.2-25.733l-4.133-3.467 3.333-3.6c12.667-13.466 11.6-35.333-2.4-48.266-11.2-10.4-8.133-10-79.467-10.4l-63.733-.4v8zM554.667 134v64h128v-16h-112V70h-16v64zm194.666 0v64h16V70h-16v64zM0 258v8h970.667v-16H0v8z" fill-rule="nonzero"></path></svg>
-                    <div class="navbar_nav">
-                        <div class="navbar_nav_item">
-                            <a href="genres.html" class="header_link">
-                                <div class="icon_header icon_genre"></div>
-                                Жанры
-                            </a>
-                        </div>
-                        <div class="navbar_nav_item">
-                            <a href="#" class="header_link">
-                                <div class="icon_header icon_autors"></div>
-                                Авторы
-                            </a>
-                        </div>
-                        <div class="navbar_nav_item">
-                            <a href="#" class="header_link">
-                                <div class="icon_header icon_audio"></div>
-                                Аудиокниги
-                            </a>
-                        </div>
+                    <div class="nav_authorization">
+                        <a href="authorization.html" class="nav_btn btn_authorization" id="btn_authorization">Войти</a>
+                        <a href="registration.html" class="nav_btn btn_registration" id="btn_registration">Зарегестрироваться</a>
                     </div>
                 </div>
+
                 <div class="navbar_search">
                     <input class="form_seacrh" type="text" placeholder="Поиск по названию книги, автора">
                     <span class="icon_search fa fa-seacrh"></span>
@@ -156,5 +163,7 @@
     </div>
 
 </body>
+
+<script type="text/javascript" scr="script_header.js"></script>
 
 </html>
