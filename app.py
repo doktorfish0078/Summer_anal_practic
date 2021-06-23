@@ -38,16 +38,21 @@ class UserToBook(db.Model):
     bookId = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return '<UserToBook>' % self.id
+        return '<UserToBook %r>' % self.id
 
+# db.session.query(Book).delete()
+# db.session.commit()
 
 # matvey's gayshit block (не трогай этот блок и он не будет вонять)
 # bookses = []
-# book = Book(name="Твоё слово(СИ)", author="Лисканова Яна", genre="gaysex", annotation="", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
+# book = Book(name="Твоё слово(СИ)", author="Лисканова Яна", genre="gaysex", annotation="Пиздатая книга", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
 # bookses.append(book)
-# book = Book(name="Твоё слово(СИ)", author="Лисканава Яна", genre="gaysex", annotation="", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
+# book = Book(name="Твоё слово(СИ)", author="Лисканава Яна", genre="gaysex", annotation="Так - хуета", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
 # bookses.append(book)
-# book = Book(name="Ка к насрать себе врот", author="Лисканова Она", genre="gaysex", annotation="", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
+# book = Book(name="Ка к насрать себе врот", author="Лисканова Она", genre="gaysex",
+#             annotation=" Я большой динозавер в маленькой пещере она такая узкая и ни аднаго наскального рисунка дадададад ооооооо похоже это не пещера, а пещер",
+#             year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
+# bookses.append(book)
 # try:
 #     for book in bookses:
 #         db.session.add(book)
@@ -68,7 +73,8 @@ def home():
 
 @app.route('/book/<int:id>')
 def book(id):
-    return render_template("show_description_book.html")
+    book_info = Book.query.filter(Book.id == str(id)).first()
+    return render_template("show_description_book.html", book=book_info)
 
 
 @app.route('/genres')
