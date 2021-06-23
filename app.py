@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///library.db'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 
@@ -37,14 +38,32 @@ class UserToBook(db.Model):
     bookId = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
-        return '<UserToBook>'
+        return '<UserToBook>' % self.id
 
+
+# matvey's gayshit block (не трогай этот блок и он не будет вонять)
+# bookses = []
+# book = Book(name="Твоё слово(СИ)", author="Лисканова Яна", genre="gaysex", annotation="", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
+# bookses.append(book)
+# book = Book(name="Твоё слово(СИ)", author="Лисканава Яна", genre="gaysex", annotation="", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
+# bookses.append(book)
+# book = Book(name="Ка к насрать себе врот", author="Лисканова Она", genre="gaysex", annotation="", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
+# try:
+#     for book in bookses:
+#         db.session.add(book)
+#         db.session.commit()
+# except Exception as ex:
+#     template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+#     message = template.format(type(ex).__name__, ex.args)
+#     print("подмойся")
+#     print(message)
 
 
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template("home.html")
+    books = Book.query.order_by(Book.id).all()
+    return render_template("home.html", books=books)
 
 
 @app.route('/book/<int:id>')
@@ -59,3 +78,5 @@ def genres():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+

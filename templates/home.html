@@ -61,15 +61,29 @@
         <div class="index_title_block">
             <a href="#" class="index_title_block_link">Новинки книг</a>
         </div>
+
         <div class="book_snippets">
-            <a href="book/1" class="book_snippet">
+        {% for book in books %}
+            <a href="book/{{ book.id }}" class="book_snippet">
                 <div class="book_snippet_image">
                     <img src="https://online-knigi.com.ua/pic/7/2/5/9/7/2/kniga-tvoe-slovo-si.webp" alt="">
                 </div>
-                <div class="book_snippet_name">Твоё слово(СИ)</div>
-                <div class="book_snippet_autor">Лисканова Яна</div>
+                <div class="book_snippet_name">{{ book.name }}</div>
+                <div class="book_snippet_autor">{{ book.author }}</div>
             </a>
+        {% endfor %}
         </div>
+
+
+<!--        <div class="book_snippets">-->
+<!--            <a href="book/1" class="book_snippet">-->
+<!--                <div class="book_snippet_image">-->
+<!--                    <img src="https://online-knigi.com.ua/pic/7/2/5/9/7/2/kniga-tvoe-slovo-si.webp" alt="">-->
+<!--                </div>-->
+<!--                <div class="book_snippet_name">Твоё слово(СИ)</div>-->
+<!--                <div class="book_snippet_autor">Лисканова Яна</div>-->
+<!--            </a>-->
+<!--        </div>-->
 
         <div class="index_title_block">
             <a href="#" class="index_title_block_link">Новинки аудиокниг</a>
