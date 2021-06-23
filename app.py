@@ -82,14 +82,16 @@ def genres():
     return render_template("genres.html")
 
 
-@app.route('/authorization.html')
-def authorization():
-    return render_template('authorization.html')
-
-
+@app.route('/registration')
 @app.route('/registration.html')
 def registration():
     return render_template('registration.html')
+
+
+@app.route('/authorization')
+@app.route('/authorization.html')
+def authorization():
+    return render_template('authorization.html')
 
 
 if __name__ == "__main__":
