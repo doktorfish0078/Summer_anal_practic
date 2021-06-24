@@ -77,8 +77,20 @@
                 <button type="submit" class="btn_accept_authorization">Зарегестрироваться</button>
             </form>
         </div>
+        <div class="modal_reg modal_error" id="modal_error" style="display: none;">
+            Пользователь с такими данными уже зарегестрирован.
+        </div>
     </div>
 
 </body>
 
+<script>
+    function show_modal_error(){
+        let modal = document.getElementById("modal_error");
+        modal.style.display = "block";
+        setTimeout(()=>{
+            modal.style.display = "none";
+        }, 3000);
+    }
+</script>
 </html>
