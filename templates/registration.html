@@ -65,14 +65,16 @@
     <div class="main_container container">
         <div class="registration">
             <h1>Регистрация</h1>
-            <form class="form_registration" action="">
+            <form class="form_registration" action="/registration" method="post">
                 <div class="form_item">
-                    <label>E-mail</label><input class="input_autho input_email" type="text">
+                    <label>E-mail</label>
+                    <input class="input_autho input_email" name="mail" type="email">
                 </div>
                 <div class="form_item">
-                    <label>Пароль</label><input class="input_autho input_pass" type="text">
+                    <label>Пароль</label>
+                    <input class="input_autho input_pass" name="pass" type="password">
                 </div>
-                <button class="btn_accept_authorization">Зарегестрироваться</button>
+                <button type="submit" class="btn_accept_authorization">Зарегестрироваться</button>
             </form>
         </div>
     </div>

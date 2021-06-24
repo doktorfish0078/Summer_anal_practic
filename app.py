@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request,redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -6,6 +6,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///library.db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
+thisUser = None
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,8 +41,18 @@ class UserToBook(db.Model):
     def __repr__(self):
         return '<UserToBook %r>' % self.id
 
+
+
+# del books
 # db.session.query(Book).delete()
 # db.session.commit()
+
+# del users
+# db.session.query(User).delete()
+# db.session.commit()
+
+# for i in User.query.all():
+#     print(i.id, i.name, i.mail, i.password)
 
 # matvey's gayshit block (не трогай этот блок и он не будет вонять)
 # bookses = []
@@ -82,16 +93,49 @@ def genres():
     return render_template("genres.html")
 
 
-@app.route('/registration')
+@app.route('/registration', methods=['POST', 'GET'])
 @app.route('/registration.html')
 def registration():
-    return render_template('registration.html')
+    if request.method == "POST":
+
+        mail = request.form['mail']
+        password = request.form['pass']
+
+        if (User.query.filter(User.mail == mail).first()) is not None:
+            return redirect("/registration")
+
+        user = User(name=mail.split('@')[0], mail=mail, password=password)
+        try:
+            db.session.add(user)
+            db.session.commit()
+            return redirect("/home")
+        except Exception as ex:
+            template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+            message = template.format(type(ex).__name__, ex.args)
+            return "ERROR (%r)" % message
+    else:
+        return render_template('registration.html')
 
 
-@app.route('/authorization')
+@app.route('/authorization', methods=['POST', 'GET'])
 @app.route('/authorization.html')
 def authorization():
-    return render_template('authorization.html')
+    if request.method == "POST":
+
+        mail = request.form['mail']
+        password = request.form['pass']
+
+        currentUser = User.query.filter(User.mail == mail).first()
+
+        if (currentUser is None) or (currentUser.password != password):
+            return redirect("/authorization")
+
+        global thisUser
+        thisUser = currentUser
+
+        return redirect("/home")
+    else:
+        return render_template('authorization.html')
 
 
 if __name__ == "__main__":

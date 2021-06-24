@@ -65,12 +65,12 @@
     <div class="main_container container">
         <div class="authorization">
             <h1>Вход</h1>
-            <form class="form_authorization" action="">
+            <form class="form_authorization" action="/authorization" method="post">
                 <div class="form_item">
-                    <label>E-mail</label><input class="input_autho input_email" type="text">
+                    <label>E-mail</label><input class="input_autho input_email" type="email" name="mail">
                 </div>
                 <div class="form_item">
-                    <label>Пароль</label><input class="input_autho input_pass" type="text">
+                    <label>Пароль</label><input class="input_autho input_pass" type="password" name="pass">
                 </div>
                 <button class="btn_accept_authorization">Войти</button>
             </form>
