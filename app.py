@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,redirect
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -7,6 +7,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 thisUser = None
+
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -40,7 +41,6 @@ class UserToBook(db.Model):
 
     def __repr__(self):
         return '<UserToBook %r>' % self.id
-
 
 
 # del books
@@ -80,8 +80,8 @@ def utility_processor():
     def current_user():
         global thisUser
         return thisUser
-    return dict(current_user=current_user)
 
+    return dict(current_user=current_user)
 
 
 @app.route('/')
@@ -157,12 +157,13 @@ def add_book():
         roomNum = -1
         publishingHouse = request.form["publishing_house_book"]
 
-        book = Book(name=name, genre=genre, annotation=annotation, author=author, year=year, pageCount=pageCount, roomNum=roomNum,
+        book = Book(name=name, genre=genre, annotation=annotation, author=author, year=year, pageCount=pageCount,
+                    roomNum=roomNum,
                     publishingHouse=publishingHouse)
         try:
             db.session.add(book)
             db.session.commit()
-            return redirect("/book/"+str(book.id))
+            return redirect("/book/" + str(book.id))
         except Exception as ex:
             template = "An exception of type {0} occurred. Arguments:\n{1!r}"
             message = template.format(type(ex).__name__, ex.args)
@@ -173,5 +174,3 @@ def add_book():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
