@@ -63,11 +63,41 @@
         </div>
     </div>
     <div class="main_container container">
+
         <form class="form_add_book">
-            <h1>Добавить новую книгу</h1>
+            <h1 class="title_add_book">Добавить новую книгу</h1>
             <div class="form_control">
-                <label>Название книги</label><input class="" type="text">
+                <label>Название книги</label>
+                <input class="form_add_book_input" id="title_book" type="text">
             </div>
+            <div class="form_control">
+                <label>Жанр</label>
+                <input class="form_add_book_input" id="genre_book" type="text">
+            </div>
+            <div class="form_control">
+                <label>Описание</label>
+                <textarea class="form_add_book_textarea form_add_book_input" id="description_book" type="text"> </textarea>
+            </div>
+            <div class="form_control">
+                <label>Год издания</label>
+                <input class="form_add_book_input" id="year_book" type="text">
+            </div>
+            <div class="form_control">
+                <label>Автор</label>
+                <input class="form_add_book_input" id="author_book" type="text">
+            </div>
+            <div class="form_control">
+                <label>Издательство</label>
+                <input class="form_add_book_input" id="publishing_house_book" type="text">
+            </div>
+            <div class="form_control">
+                <label>Количество страниц</label>
+                <input class="form_add_book_input" id="count_pages_book" type="text">
+            </div>
+            <div class="btn_place">
+                <button class="btn_accept">Добавить</button>
+            </div>
+
         </form>
     </div>
 
