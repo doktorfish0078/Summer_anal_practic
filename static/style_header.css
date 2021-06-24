@@ -226,6 +226,17 @@ body {
     background-color: #53BCDC;
 }
 
+.navbar_icon_profile {
+    height: 40px;
+    width: 40px;
+    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNEREUyRTgiLz48cGF0aCBkPSJNMjAgMjBhNS4zMzIgNS4zMzIgMCAwMDUuMzMzLTUuMzMzQTUuMzMyIDUuMzMyIDAgMDAyMCA5LjMzM2E1LjMzMiA1LjMzMiAwIDAwLTUuMzM0IDUuMzM0QTUuMzMyIDUuMzMyIDAgMDAyMCAyMHptMCAyLjY2N2MtMy41NiAwLTEwLjY2NyAxLjc4Ni0xMC42NjcgNS4zMzN2Mi42NjdoMjEuMzMzVjI4YzAtMy41NDctNy4xMDYtNS4zMzMtMTAuNjY2LTUuMzMzeiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==) no-repeat;
+    margin-left: 15px;
+}
+
+.btn_add_book {
+    background-color: #6DB92E;
+}
+
 .navbar_search {
     width: 100%;
     display: flex;

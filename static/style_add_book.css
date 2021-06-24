@@ -102,64 +102,20 @@ body {
     background-color: #ffffff;
 }
 
-.main_container {
-    /*height: 100%;*/
-}
-
-.header {
-    padding-bottom: 5px;
-}
-
 .container {
     margin: 0 50px 0 50px;
 }
 
-.registration {
+.form_add_book {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    align-content: center;
 }
 
-.form_registration {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-}
-
-.form_item {
+.form_control {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-size: 18px;
-}
-
-.input_autho {
-    margin-left: 10px;
-    margin-bottom: 25px;
-    height: 20px;
-    width: 240px;
-}
-
-.btn_accept_authorization {
-    border: 0;
-    border-radius: 7px;
-    background-color: #56B156;
-    padding: 15px 0;
-    margin-right: 15px;
-    margin-left: 15px;
-    font-weight: 700;
-    font-size: 22px;
-}
-
-.modal_reg{
-    padding: 15px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-
-
-}
-.modal_error{
-    background-color: rgba(220,26,42,0.8);
 }
