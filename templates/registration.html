@@ -5,11 +5,11 @@
         <form class="form_registration" action="/registration" method="post">
             <div class="form_item">
                 <label>E-mail</label>
-                <input class="input_autho input_email" name="mail" type="email">
+                <input class="input_autho input_email" name="mail" type="email" required>
             </div>
             <div class="form_item">
                 <label>Пароль</label>
-                <input class="input_autho input_pass" name="pass" type="password">
+                <input class="input_autho input_pass" name="pass" type="password" required>
             </div>
             <button type="submit" class="btn_accept_authorization">Зарегестрироваться</button>
         </form>
@@ -25,5 +25,8 @@
                 modal.style.display = "none";
             }, 3000);
         }
+        {% if err == True %}
+            show_modal_error()
+        {% endif %}
     </script>
 {% endblock %}

@@ -164,6 +164,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: left;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
 
 .book_snippet {

@@ -88,7 +88,7 @@ def utility_processor():
 @app.route('/home')
 def home():
     books = Book.query.order_by(Book.id).all()
-    return render_template("home.html", books=books)
+    return render_template("home.html", books=books[0:7])
 
 
 def distance(a, b):
@@ -132,12 +132,14 @@ def registration():
         password = request.form['pass']
 
         if (User.query.filter(User.mail == mail).first()) is not None:
-            return redirect("/registration")
+            return render_template('registration.html', err=True)
 
         user = User(name=mail.split('@')[0], mail=mail, password=password)
         try:
             db.session.add(user)
             db.session.commit()
+            global thisUser
+            thisUser = user
             return redirect("/home")
         except Exception as ex:
             template = "An exception of type {0} occurred. Arguments:\n{1!r}"
@@ -157,7 +159,7 @@ def authorization():
         currentUser = User.query.filter(User.mail == mail).first()
 
         if (currentUser is None) or (currentUser.password != password):
-            return redirect("/authorization")
+            return render_template('authorization.html', err=True)
 
         global thisUser
         thisUser = currentUser

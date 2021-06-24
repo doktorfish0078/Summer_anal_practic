@@ -102,12 +102,6 @@ body {
     background-color: #ffffff;
 }
 
-.container {
-    margin: 0 50px 0 50px;
-    display: flex;
-    justify-content: center;
-}
-
 .title_add_book {
     text-align: center;
     margin-bottom: 15px;
@@ -115,6 +109,7 @@ body {
 
 .form_add_book {
     width: 40%;
+    margin: 0 auto;
 }
 
 .form_control {
