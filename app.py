@@ -75,6 +75,15 @@ class UserToBook(db.Model):
 #     print(message)
 
 
+@app.context_processor
+def utility_processor():
+    def current_user():
+        global thisUser
+        return thisUser
+    return dict(current_user=current_user)
+
+
+
 @app.route('/')
 @app.route('/home')
 def home():
@@ -94,7 +103,6 @@ def genres():
 
 
 @app.route('/registration', methods=['POST', 'GET'])
-@app.route('/registration.html')
 def registration():
     if request.method == "POST":
 
@@ -118,7 +126,6 @@ def registration():
 
 
 @app.route('/authorization', methods=['POST', 'GET'])
-@app.route('/authorization.html')
 def authorization():
     if request.method == "POST":
 
@@ -136,6 +143,32 @@ def authorization():
         return redirect("/home")
     else:
         return render_template('authorization.html')
+
+
+@app.route('/add_book', methods=['POST', 'GET'])
+def add_book():
+    if request.method == "POST":
+        name = request.form["title_book"]
+        genre = request.form["genre_book"]
+        annotation = request.form["description_book"]
+        author = request.form["author_book"]
+        year = request.form["year_book"]
+        pageCount = request.form["count_pages_book"]
+        roomNum = -1
+        publishingHouse = request.form["publishing_house_book"]
+
+        book = Book(name=name, genre=genre, annotation=annotation, author=author, year=year, pageCount=pageCount, roomNum=roomNum,
+                    publishingHouse=publishingHouse)
+        try:
+            db.session.add(book)
+            db.session.commit()
+            return redirect("/book/"+str(book.id))
+        except Exception as ex:
+            template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+            message = template.format(type(ex).__name__, ex.args)
+            return "ERROR (%r)" % message
+    else:
+        return render_template('add_book.html')
 
 
 if __name__ == "__main__":
