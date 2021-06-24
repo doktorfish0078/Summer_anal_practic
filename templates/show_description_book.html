@@ -31,32 +31,16 @@
         <h1>Похожие книги</h1>
     </div>
     <div class="similar_books">
+        {% for item in books %}
         <div class="similar_book_item">
-            <a href="#" class="book_snippet">
+            <a href="book/{{ item.id }}" class="book_snippet">
                 <div class="book_snippet_image">
                     <img src="https://online-knigi.com.ua/pic/7/2/5/9/7/2/kniga-tvoe-slovo-si.webp" alt="">
                 </div>
-                <div class="book_snippet_name">Твоё слово(СИ)</div>
-                <div class="book_snippet_autor">Лисканова Яна</div>
+                <div class="book_snippet_name"> {{ item.name }}</div>
+                <div class="book_snippet_autor">{{ item.author }}</div>
             </a>
         </div>
-        <div class="similar_book_item">
-            <a href="#" class="book_snippet">
-                <div class="book_snippet_image">
-                    <img src="https://online-knigi.com.ua/pic/7/2/5/9/7/2/kniga-tvoe-slovo-si.webp" alt="">
-                </div>
-                <div class="book_snippet_name">Твоё слово(СИ)</div>
-                <div class="book_snippet_autor">Лисканова Яна</div>
-            </a>
-        </div>
-        <div class="similar_book_item">
-            <a href="#" class="book_snippet">
-                <div class="book_snippet_image">
-                    <img src="https://online-knigi.com.ua/pic/7/2/5/9/7/2/kniga-tvoe-slovo-si.webp" alt="">
-                </div>
-                <div class="book_snippet_name">Твоё слово(СИ)</div>
-                <div class="book_snippet_autor">Лисканова Яна</div>
-            </a>
-        </div>
+        {% endfor %}
     </div>
 {% endblock %}
