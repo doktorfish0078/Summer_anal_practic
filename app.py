@@ -43,15 +43,10 @@ class UserToBook(db.Model):
         return '<UserToBook %r>' % self.id
 
 
-# del books
 # db.session.query(Book).delete()
 # db.session.commit()
-
-# del users
 # db.session.query(User).delete()
 # db.session.commit()
-
-# del u2books
 # db.session.query(UserToBook).delete()
 # db.session.commit()
 
@@ -163,8 +158,11 @@ def registration():
             db.session.commit()
             global thisUser
             thisUser = user
+            print(thisUser)
+
             return redirect("/home")
         except Exception as ex:
+            thisUser = None
             template = "An exception of type {0} occurred. Arguments:\n{1!r}"
             message = template.format(type(ex).__name__, ex.args)
             return "ERROR (%r)" % message
