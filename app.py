@@ -51,28 +51,21 @@ class UserToBook(db.Model):
 # db.session.query(User).delete()
 # db.session.commit()
 
+# del u2books
+# db.session.query(UserToBook).delete()
+# db.session.commit()
+
+
+# look into db
+# for i in UserToBook.query.all():
+#     print(i.id, i.bookId, i.userId)
+#
 # for i in User.query.all():
 #     print(i.id, i.name, i.mail, i.password)
+#
+# for i in Book.query.all():
+#     print(i.id, i.name) прописал не все поля, мне лень
 
-# matvey's gayshit block (не трогай этот блок и он не будет вонять)
-# bookses = []
-# book = Book(name="Твоё слово(СИ)", author="Лисканова Яна", genre="gaysex", annotation="Пиздатая книга", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
-# bookses.append(book)
-# book = Book(name="Твоё слово(СИ)", author="Лисканава Яна", genre="gaysex", annotation="Так - хуета", year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
-# bookses.append(book)
-# book = Book(name="Ка к насрать себе врот", author="Лисканова Она", genre="gaysex",
-#             annotation=" Я большой динозавер в маленькой пещере она такая узкая и ни аднаго наскального рисунка дадададад ооооооо похоже это не пещера, а пещер",
-#             year=211, pageCount=555, roomNum=5,  publishingHouse="gayFbric")
-# bookses.append(book)
-# try:
-#     for book in bookses:
-#         db.session.add(book)
-#         db.session.commit()
-# except Exception as ex:
-#     template = "An exception of type {0} occurred. Arguments:\n{1!r}"
-#     message = template.format(type(ex).__name__, ex.args)
-#     print("подмойся")
-#     print(message)
 
 
 @app.context_processor
@@ -111,12 +104,42 @@ def distance(a, b):
     return current_row[n]
 
 
-@app.route('/book/<int:id>')
+@app.route('/book/<int:id>', methods=['POST', 'GET'])
 def book(id):
-    book_info = Book.query.filter(Book.id == str(id)).first()
-    books = Book.query.filter(Book.genre == book_info.genre, Book.id != book_info.id).all()
-    books = sorted(books, key=lambda bk: distance(book_info.name, bk.name))
-    return render_template("show_description_book.html", book=book_info, books=books)
+    if request.method == "POST":
+        if thisUser is None:
+            return redirect("/book/"+str(id))
+
+        utb = UserToBook.query.filter(UserToBook.userId == thisUser.id).all()
+
+        bookIds = []
+        for userBook in utb:
+            bookIds.append(userBook.bookId)
+        if id in bookIds:
+            return redirect("/book/"+str(id))
+
+        userToBook = UserToBook(userId=int(thisUser.id), bookId=int(id))
+        try:
+            db.session.add(userToBook)
+            db.session.commit()
+            return redirect("/book/"+str(id))
+        except Exception as ex:
+            template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+            message = template.format(type(ex).__name__, ex.args)
+            return "ERROR (%r)" % message
+    else:
+        book_info = Book.query.filter(Book.id == str(id)).first()
+        books = Book.query.filter(Book.genre == book_info.genre, Book.id != book_info.id).all()
+        books = sorted(books, key=lambda bk: distance(book_info.name, bk.name))
+        if thisUser is not None:
+            utob = UserToBook.query.filter(UserToBook.userId == thisUser.id).all()
+            bookIds = []
+            for userBook in utob:
+                bookIds.append(userBook.bookId)
+            for currBook in books:
+                if currBook.id in bookIds:
+                    books.remove(currBook)
+        return render_template("show_description_book.html", book=book_info, books=books)
 
 
 @app.route('/genres')

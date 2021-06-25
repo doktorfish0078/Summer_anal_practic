@@ -20,7 +20,9 @@
                 <a href="#" class="book_author_link"> {{ book.author }} </a>
             </div>
             <div class="read_book">
-                <button class="btn_read_book">Читать книгу</button>
+                <form action="" method="post">
+                    <button class="btn_read_book">Читать книгу</button>
+                </form>
             </div>
             <div class="book_description">
                 {{ book.annotation }}
@@ -33,7 +35,7 @@
     <div class="similar_books">
         {% for item in books %}
         <div class="similar_book_item">
-            <a href="book/{{ item.id }}" class="book_snippet">
+            <a href="/book/{{ item.id }}" class="book_snippet">
                 <div class="book_snippet_image">
                     <img src="https://online-knigi.com.ua/pic/7/2/5/9/7/2/kniga-tvoe-slovo-si.webp" alt="">
                 </div>
