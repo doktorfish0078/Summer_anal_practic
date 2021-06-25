@@ -4,7 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///library.db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
+db = SQLAlchemy(app, session_options={
+    'expire_on_commit': False
+})
 
 thisUser = None
 
@@ -54,12 +57,12 @@ class UserToBook(db.Model):
 # look into db
 # for i in UserToBook.query.all():
 #     print(i.id, i.bookId, i.userId)
-#
+
 # for i in User.query.all():
 #     print(i.id, i.name, i.mail, i.password)
 #
 # for i in Book.query.all():
-#     print(i.id, i.name) прописал не все поля, мне лень
+#     print(i.id, i.name)
 
 
 
